@@ -44,14 +44,19 @@ const checkCards = () => {
   const secondCharacter = secondCard.getAttribute('data-character');
 
   if (firstCharacter === secondCharacter) {
+    const audio = new Audio('../audio/ping.mp3');
+    audio.play();
     firstCard.firstChild.classList.add('disabled-card');
     secondCard.firstChild.classList.add('disabled-card');
     firstCard = '';
     secondCard = '';
     checkEndGame();
     addPontuacao ();
+    
   
   } else {
+    const audio = new Audio('../audio/ping.mp3');
+    audio.play();
     removePontuacao();
     setTimeout(() => {
       firstCard.classList.remove('reveal-card');
