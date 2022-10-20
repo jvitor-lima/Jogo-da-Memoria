@@ -1,6 +1,7 @@
 const grid = document.querySelector('.grid');
 const spanPlayer = document.querySelector('.player');
 const timer = document.querySelector('.timer');
+const contError = document.querySelector('.pontuacao');
 
 const characters = [
   'gwen',
@@ -34,8 +35,17 @@ const checkEndGame = () => {
 
   if (disabledCards.length === 30) {
     clearInterval(this.loop);
-    alert(`Parabéns, ${spanPlayer.innerHTML}! Seu tempo foi: ${timer.innerHTML}`);
+    alert(`sua pontuação foi: ${contError.innerHTML}`)
+    if (contError.innerHTML >= 650){
+      alert(`Parabéns, ${spanPlayer.innerHTML}! Seu tempo foi: ${timer.innerHTML}`);
+      alert(`Encaminhando para o proximo nivel... `)
+      window.location.href = "../index.html";
+    }else{
+      alert(`Que pena, ${spanPlayer.innerHTML}! Sua pontuação foi abaixo de 450`);
+      alert(`Estamos reiniciando a fase para que você tente novamente... `)
+      window.location.href = "../pages/game_hard.html";
   }
+}
 }
 
 const checkCards = () => {
@@ -49,10 +59,11 @@ const checkCards = () => {
 
     firstCard = '';
     secondCard = '';
-
+    addPontuacao ();
     checkEndGame();
 
   } else {
+    
     setTimeout(() => {
 
       firstCard.classList.remove('reveal-card');
@@ -62,6 +73,7 @@ const checkCards = () => {
       secondCard = '';
 
     }, 500);
+    removePontuacao();
   }
 
 }
@@ -113,6 +125,15 @@ const loadGame = () => {
     const card = createCard(character);
     grid.appendChild(card);
   });
+}
+
+const removePontuacao = () => {
+  const pontos = +contError.innerHTML;
+  contError.innerHTML = pontos - 65;
+}
+const addPontuacao = () => {
+  const pontos = +contError.innerHTML;
+  contError.innerHTML = pontos + 135;
 }
 
 const startTimer = () => {

@@ -2,6 +2,7 @@ const grid = document.querySelector('.grid');
 const spanPlayer = document.querySelector('.player');
 const timer = document.querySelector('.timer');
 const contError = document.querySelector('.pontuacao');
+
 const characters = [
   'teemo',
   'zyra',
@@ -25,12 +26,12 @@ const checkEndGame = () => {
   if (disabledCards.length === 10) {
     clearInterval(this.loop);
     alert(`sua pontuação foi: ${contError.innerHTML}`)
-    if (contError.innerHTML > 75){
+    if (contError.innerHTML > 60){
       alert(`Parabéns, ${spanPlayer.innerHTML}! Seu tempo foi: ${timer.innerHTML}`);
       alert(`Encaminhando para o proximo nivel... `)
       window.location.href = "../pages/game_medium.html";
     }else{
-      alert(`Que pena, ${spanPlayer.innerHTML}! Sua pontuação foi abaixo de 75`);
+      alert(`Que pena, ${spanPlayer.innerHTML}! Sua pontuação foi abaixo de 60`);
       alert(`Estamos reiniciando a fase para que você tente novamente... `)
       window.location.href = "../pages/game_izi.html";
     }
@@ -117,12 +118,7 @@ const addPontuacao = () => {
   const pontos = +contError.innerHTML;
   contError.innerHTML = pontos + 5;
 }
-const getPontuacao = () => {
-  const getpontos = +contError.innerHTML;
-  if (getpontos > 90) {
-    
-  }
-}
+
 const startTimer = () => {
 
   this.loop = setInterval(() => {
