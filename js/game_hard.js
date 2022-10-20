@@ -4,7 +4,7 @@ const timer = document.querySelector('.timer');
 const contError = document.querySelector('.pontuacao');
 
 const characters = [
-  'gwen',
+  'katarina',
   'gnar',
   'ahri',
   'leona',
