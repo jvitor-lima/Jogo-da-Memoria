@@ -38,8 +38,9 @@ const checkEndGame = () => {
     clearInterval(this.loop);
     alert(`sua pontuação foi: ${contError.innerHTML}`)
     if (contError.innerHTML >= 650){
-      alert(`Parabéns, ${spanPlayer.innerHTML}! Seu tempo foi: ${timer.innerHTML} segundos`);
-      alert(`Encaminhando para o proximo nivel... `)
+      alert(`Parabéns, ${spanPlayer.innerHTML}! Você zerou o game! 
+      Seu tempo foi: ${timer.innerHTML} segundos`);
+      alert(`estamos te retornando para a pagina inicial!`)
       window.location.href = "../index.html";
     }else{
       alert(`Que pena, ${spanPlayer.innerHTML}! Sua pontuação foi abaixo de 450`);

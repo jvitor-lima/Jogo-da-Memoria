@@ -6,13 +6,13 @@ const contError = document.querySelector('.pontuacao');
 const characters = [
   'gwen',
   'teemo',
-  'sona',
+  'poro',
   'zyra',
   'lulu',
   'zoe',
   'neeko',
   'xayah',
-  'jinx',
+  'fizz',
   'yummi',
 ];
 
