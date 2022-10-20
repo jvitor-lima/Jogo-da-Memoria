@@ -1,6 +1,7 @@
 const grid = document.querySelector('.grid');
 const spanPlayer = document.querySelector('.player');
 const timer = document.querySelector('.timer');
+const contError = document.querySelector('.pontuacao');
 const characters = [
   'teemo',
   'zyra',
@@ -23,9 +24,16 @@ const checkEndGame = () => {
 
   if (disabledCards.length === 10) {
     clearInterval(this.loop);
-    alert(`Parabéns, ${spanPlayer.innerHTML}! Seu tempo foi: ${timer.innerHTML}`);
-    alert(`Encaminhando para o proximo nivel... `)
-    window.location.href = "../pages/game_medium.html";
+    alert(`sua pontuação foi: ${contError.innerHTML}`)
+    if (contError.innerHTML > 75){
+      alert(`Parabéns, ${spanPlayer.innerHTML}! Seu tempo foi: ${timer.innerHTML}`);
+      alert(`Encaminhando para o proximo nivel... `)
+      window.location.href = "../pages/game_medium.html";
+    }else{
+      alert(`Que pena, ${spanPlayer.innerHTML}! Sua pontuação foi abaixo de 75`);
+      alert(`Estamos reiniciando a fase para que você tente novamente... `)
+      window.location.href = "../pages/game_izi.html";
+    }
   }
 }
 
@@ -34,25 +42,22 @@ const checkCards = () => {
   const secondCharacter = secondCard.getAttribute('data-character');
 
   if (firstCharacter === secondCharacter) {
-
     firstCard.firstChild.classList.add('disabled-card');
     secondCard.firstChild.classList.add('disabled-card');
-
     firstCard = '';
     secondCard = '';
-
     checkEndGame();
-
+    addPontuacao ();
+  
   } else {
+    removePontuacao();
     setTimeout(() => {
-
       firstCard.classList.remove('reveal-card');
       secondCard.classList.remove('reveal-card');
-
       firstCard = '';
       secondCard = '';
 
-    }, 500);
+    }, 660);
   }
 
 }
@@ -69,11 +74,10 @@ const revealCard = ({ target }) => {
     firstCard = target.parentNode;
 
   } else if (secondCard === '') {
-
     target.parentNode.classList.add('reveal-card');
     secondCard = target.parentNode;
-
     checkCards();
+    
 
   }  
 }
@@ -105,7 +109,20 @@ const loadGame = () => {
     grid.appendChild(card);
   });
 }
-
+const removePontuacao = () => {
+  const pontos = +contError.innerHTML;
+  contError.innerHTML = pontos - 5;
+}
+const addPontuacao = () => {
+  const pontos = +contError.innerHTML;
+  contError.innerHTML = pontos + 5;
+}
+const getPontuacao = () => {
+  const getpontos = +contError.innerHTML;
+  if (getpontos > 90) {
+    
+  }
+}
 const startTimer = () => {
 
   this.loop = setInterval(() => {
@@ -119,4 +136,5 @@ window.onload = () => {
   spanPlayer.innerHTML = localStorage.getItem('player');
   startTimer();
   loadGame();
+
 }
