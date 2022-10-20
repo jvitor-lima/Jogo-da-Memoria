@@ -2,7 +2,7 @@ const cards = document.querySelectorAll('.card');
 let hasFlippedCard = false;
 let fisrtCard, secondCard;
 let lockBoard = false;
-
+let contError = 0
 function flipCard() {
     if(lockBoard) return;
     if(this === fisrtCard) return;
@@ -42,7 +42,8 @@ function unflipCards(){
     setTimeout(() => {
         fisrtCard.classList.remove('flip');
         secondCard.classList.remove('flip');
-
+        contError = contError +1;
+        console.log(contError);
         resetBoard();
     }, 950);
 }
