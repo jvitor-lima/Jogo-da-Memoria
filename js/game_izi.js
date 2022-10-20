@@ -2,7 +2,8 @@ const grid = document.querySelector('.grid');
 const spanPlayer = document.querySelector('.player');
 const timer = document.querySelector('.timer');
 const contError = document.querySelector('.pontuacao');
-const timerOut = document.querySelector('.timer');
+
+
 const characters = [
   'teemo',
   'zyra',
@@ -127,10 +128,7 @@ const startTimer = () => {
   }, 1000);
 
 }
-const timeOut = () => {
-  const currentTimeOut = +timer.innerHTML;
-  timer.innerHTML = currentTime
-}
+
 window.onload = () => {
   spanPlayer.innerHTML = localStorage.getItem('player');
   startTimer();

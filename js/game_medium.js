@@ -51,19 +51,15 @@ const checkCards = () => {
 
     firstCard.firstChild.classList.add('disabled-card');
     secondCard.firstChild.classList.add('disabled-card');
-
     firstCard = '';
     secondCard = '';
     addPontuacao ();
     checkEndGame();
-
   } else {
     removePontuacao();
     setTimeout(() => {
-
       firstCard.classList.remove('reveal-card');
       secondCard.classList.remove('reveal-card');
-
       firstCard = '';
       secondCard = '';
 
