@@ -62,6 +62,8 @@ const checkCards = () => {
     firstCard = '';
     secondCard = '';
     addPontuacao ();
+    //const audio = new Audio('../audio/ping.mp3');
+    //audio.play();
     checkEndGame();
 
   } else {
@@ -76,6 +78,8 @@ const checkCards = () => {
 
     }, 500);
     removePontuacao();
+    const audio = new Audio('../audio/ping.mp3');
+    audio.play();
   }
 
 }

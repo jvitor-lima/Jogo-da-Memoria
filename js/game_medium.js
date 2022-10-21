@@ -54,9 +54,13 @@ const checkCards = () => {
     firstCard = '';
     secondCard = '';
     addPontuacao ();
+    //const audio = new Audio('../audio/ping.mp3');
+    //audio.play();
     checkEndGame();
   } else {
     removePontuacao();
+    const audio = new Audio('../audio/ping.mp3');
+    audio.play();
     setTimeout(() => {
       firstCard.classList.remove('reveal-card');
       secondCard.classList.remove('reveal-card');
